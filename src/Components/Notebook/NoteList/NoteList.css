@@ -1,0 +1,7 @@
+.note-list-container{
+    height: auto;
+    width: auto;
+}
+.note-list-note-button-wrapper{
+    display: flex;
+}
