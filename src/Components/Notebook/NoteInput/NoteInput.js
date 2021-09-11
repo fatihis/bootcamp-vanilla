@@ -13,7 +13,7 @@ export default function NoteInput(props) {
     <>
       <input
         type="text"
-        className="input"
+        className="note-input"
         onChange={(e) => setInputText(e.target.value)}
       />
       <button className="input-button" onClick={() => sendData()}>

@@ -1,0 +1,13 @@
+.note-input{
+    padding: 10px;
+    background-color: aqua;
+    margin-right: 10px;
+    border-radius: 7%;
+    border-width: 0ch;
+}
+
+.input-button{
+    border: none;
+    box-shadow: 1px 1px 0px 2px rgba (0,0,0,0.3);
+    background: rgb(141,217,252);
+}
