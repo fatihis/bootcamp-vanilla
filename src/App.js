@@ -26,6 +26,7 @@ const App = () => {
       */}
       {/* Sending both methods as props */}
       <NoteInput addNewNote={(newNote) => pushNewNote(newNote)} />
+      {/* Calling NoteList component in order to list added notes */}
       <NoteList
         notes={notes}
         removeNote={(index) => deleteNote(index)}

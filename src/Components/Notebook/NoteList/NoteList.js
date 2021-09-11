@@ -9,6 +9,7 @@ export default function NoteList(props) {
     setNoteListState(props.notes);
   }, [props.notes]);
 
+  //pointing deleteNote method of parent
   const deleteNote = (index) => {
     props.removeNote(index);
   };
@@ -17,6 +18,7 @@ export default function NoteList(props) {
     <div className="note-list-container">
       {noteListState.map((text, index) => {
         return (
+          //  Parsing through the array, each element renders a Note component and button with deleteNote function
           <div className="note-list-note-button-wrapper">
             <Note text={text}></Note>
             <button className="input-button" onClick={() => deleteNote(index)}>
