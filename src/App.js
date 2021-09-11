@@ -1,24 +1,35 @@
-import { TableRow } from "./Components/TableRow/TableRow";
-import data from "./data";
+import { useEffect, useState } from "react";
 import "./App.css";
+import Note from "./Components/Notebook/Note/Note";
+import NoteInput from "./Components/Notebook/NoteInput/NoteInput";
+import NoteList from "./Components/Notebook/NoteList/NoteList";
+import Table from "./Components/Table/Table";
 
 const App = () => {
+  const [notes, setNotes] = useState([]);
+
+  const pushNewNote = (newNote) => {
+    let notesArray = [...notes];
+    notesArray.push(newNote);
+    setNotes(notesArray);
+  };
+  const deleteNote = (index) => {
+    let notesArray = [...notes];
+    notesArray.splice(index, 1);
+    setNotes(notesArray);
+  };
+
   return (
     <div className="App">
-      <div className="home-table-container">
-        {data.currencies.map((element) => {
-          return (
-            <TableRow
-              exchangeType={element.exchangeType}
-              buy={element.buy}
-              sell={element.sell}
-              diff={element.diff}
-              exchangeFrom={element.exchangeFrom}
-              exchangeTo={element.exchangeTo}
-            ></TableRow>
-          );
-        })}
-      </div>
+      {/*       First Task
+      <Table />
+      */}
+      {/* Sending both methods as props */}
+      <NoteInput addNewNote={(newNote) => pushNewNote(newNote)} />
+      <NoteList
+        notes={notes}
+        removeNote={(index) => deleteNote(index)}
+      ></NoteList>
     </div>
   );
 };
