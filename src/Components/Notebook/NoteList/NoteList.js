@@ -20,7 +20,7 @@ export default function NoteList(props) {
         return (
           //  Parsing through the array, each element renders a Note component and button with deleteNote function
 
-          <div className="note-list-note-button-wrapper">
+          <div key={index} className="note-list-note-button-wrapper">
             <Link className="input-wrapper" to={"/notes/" + index}>
               <Note text={text}></Note>
             </Link>

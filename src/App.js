@@ -3,7 +3,9 @@ import Notebook from "./Components/Notebook/Notebook/Notebook";
 import Table from "./Components/Table/Table";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import NoteDetail from "./Components/Notebook/NoteDetail/NoteDetail";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { UserContext } from "./Utils/UserContext/UserContext";
+
 const App = () => {
   const [notes, setNotes] = useState([]);
 
@@ -22,30 +24,33 @@ const App = () => {
     notesArray[id] = newText;
     setNotes(notesArray);
   };
+
   return (
     <Router>
-      <div className="App">
-        <Switch>
-          <Route exact path="/">
-            <Notebook
-              notes={notes}
-              addNewNote={(newNote) => pushNewNote(newNote)}
-              removeNote={(index) => deleteNote(index)}
-            />
-          </Route>
-          <Route path="/table">
-            {/*       First Task*/}
-            <Table />
-          </Route>
-          <Route path="/notes/:id">
-            <NoteDetail
-              notes={notes}
-              removeNote={(index) => deleteNote(index)}
-              updateNote={(id, newText) => updateNote(id, newText)}
-            />
-          </Route>
-        </Switch>
-      </div>
+      <UserContext.Provider value="111222333aaabbb">
+        <div className="App">
+          <Switch>
+            <Route exact path="/">
+              <Notebook
+                notes={notes}
+                addNewNote={(newNote) => pushNewNote(newNote)}
+                removeNote={(index) => deleteNote(index)}
+              />
+            </Route>
+            <Route path="/table">
+              {/*       First Task*/}
+              <Table />
+            </Route>
+            <Route path="/notes/:id">
+              <NoteDetail
+                notes={notes}
+                removeNote={(index) => deleteNote(index)}
+                updateNote={(id, newText) => updateNote(id, newText)}
+              />
+            </Route>
+          </Switch>
+        </div>
+      </UserContext.Provider>
     </Router>
   );
 };
