@@ -1,10 +1,9 @@
-import { useEffect, useState } from "react";
 import "./App.css";
-import Note from "./Components/Notebook/Note/Note";
-import NoteInput from "./Components/Notebook/NoteInput/NoteInput";
-import NoteList from "./Components/Notebook/NoteList/NoteList";
+import Notebook from "./Components/Notebook/Notebook/Notebook";
 import Table from "./Components/Table/Table";
-
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import NoteDetail from "./Components/Notebook/NoteDetail/NoteDetail";
+import { useState } from "react";
 const App = () => {
   const [notes, setNotes] = useState([]);
 
@@ -18,20 +17,30 @@ const App = () => {
     notesArray.splice(index, 1);
     setNotes(notesArray);
   };
-
   return (
-    <div className="App">
-      {/*       First Task
-      <Table />
-      */}
-      {/* Sending both methods as props */}
-      <NoteInput addNewNote={(newNote) => pushNewNote(newNote)} />
-      {/* Calling NoteList component in order to list added notes */}
-      <NoteList
-        notes={notes}
-        removeNote={(index) => deleteNote(index)}
-      ></NoteList>
-    </div>
+    <Router>
+      <div className="App">
+        <Switch>
+          <Route exact path="/">
+            <Notebook
+              notes={notes}
+              addNewNote={(newNote) => pushNewNote(newNote)}
+              removeNote={(index) => deleteNote(index)}
+            />
+          </Route>
+          <Route path="/table">
+            {/*       First Task*/}
+            <Table />
+          </Route>
+          <Route path="/notes/:id">
+            <NoteDetail
+              notes={notes}
+              removeNote={(index) => deleteNote(index)}
+            />
+          </Route>
+        </Switch>
+      </div>
+    </Router>
   );
 };
 
