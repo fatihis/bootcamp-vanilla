@@ -25,7 +25,7 @@ export default function NoteList(props) {
               <Note text={text}></Note>
             </Link>
             <button className="input-button" onClick={() => deleteNote(index)}>
-              remove
+              REMOVE
             </button>
           </div>
         );

@@ -8,7 +8,10 @@ export default function Notebook(props) {
     <>
       {/* Sending both methods as props */}
 
-      <NoteInput addNewNote={(newNote) => props.addNewNote(newNote)} />
+      <NoteInput
+        buttonText="ADD"
+        addNewNote={(newNote) => props.addNewNote(newNote)}
+      />
       {/* Calling NoteList component in order to list added notes */}
       <NoteList
         notes={props.notes}

@@ -17,6 +17,11 @@ const App = () => {
     notesArray.splice(index, 1);
     setNotes(notesArray);
   };
+  const updateNote = (id, newText) => {
+    let notesArray = [...notes];
+    notesArray[id] = newText;
+    setNotes(notesArray);
+  };
   return (
     <Router>
       <div className="App">
@@ -36,6 +41,7 @@ const App = () => {
             <NoteDetail
               notes={notes}
               removeNote={(index) => deleteNote(index)}
+              updateNote={(id, newText) => updateNote(id, newText)}
             />
           </Route>
         </Switch>
