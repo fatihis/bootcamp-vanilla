@@ -13,7 +13,7 @@ export default function Notebook(props) {
       {/* Sending both methods as props */}
       {useLoginCallback.status && <NoteInput func="add" buttonText="ADD" />}
       {/* Calling NoteList component in order to list added notes */}
-      {useLoginCallback.status && <NoteList notes={props.notes}></NoteList>}
+      {useLoginCallback.status && <NoteList></NoteList>}
       {!useLoginCallback.status && <p>"Unauth"</p>}
     </>
   );

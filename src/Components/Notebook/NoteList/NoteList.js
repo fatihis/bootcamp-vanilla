@@ -4,14 +4,14 @@ import Note from "../Note/Note";
 import "./NoteList.css";
 import { UserContext } from "../../../Utils/UserContext/UserContext";
 
-export default function NoteList(props) {
+export default function NoteList() {
   const [noteListState, setNoteListState] = useState([]);
   const userContext = useContext(UserContext);
 
   useEffect(() => {
     console.log(noteListState);
-    setNoteListState(props.notes);
-  }, [props.notes]);
+    setNoteListState(userContext.notes);
+  }, [userContext.notes]);
 
   //pointing deleteNote method of parent
   const deleteNote = (index) => {

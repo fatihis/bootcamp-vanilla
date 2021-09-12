@@ -17,7 +17,7 @@ export default function NoteDetail(props) {
   return (
     <div>
       <div className="note-list-note-button-wrapper">
-        <Note text={props.notes[id]}></Note>
+        <Note text={userContext.notes[id]}></Note>
         <button className="input-button" onClick={() => removeAndRedirect()}>
           REMOVE
         </button>

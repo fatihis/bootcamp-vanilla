@@ -30,6 +30,7 @@ const App = () => {
       <UserContext.Provider
         value={{
           token,
+          notes,
           deleteNote,
           updateNote,
           pushNewNote,
