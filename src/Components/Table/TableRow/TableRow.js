@@ -2,7 +2,6 @@ import React from "react";
 import TableCell from "../TableCell/TableCell";
 import "./TableRow.css";
 export const TableRow = (props) => {
-  console.log("invoked " + props);
   return (
     <div className="table-row-container">
       <TableCell text={props.exchangeType} />

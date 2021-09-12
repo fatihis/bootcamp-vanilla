@@ -8,7 +8,7 @@ import { UserContext } from "./Utils/UserContext/UserContext";
 
 const App = () => {
   const [notes, setNotes] = useState([]);
-
+  const token = "111222333aaabbb";
   const pushNewNote = (newNote) => {
     let notesArray = [...notes];
     notesArray.push(newNote);
@@ -27,26 +27,25 @@ const App = () => {
 
   return (
     <Router>
-      <UserContext.Provider value="111222333aaabbb">
+      <UserContext.Provider
+        value={{
+          token,
+          deleteNote,
+          updateNote,
+          pushNewNote,
+        }}
+      >
         <div className="App">
           <Switch>
             <Route exact path="/">
-              <Notebook
-                notes={notes}
-                addNewNote={(newNote) => pushNewNote(newNote)}
-                removeNote={(index) => deleteNote(index)}
-              />
+              <Notebook notes={notes} />
             </Route>
             <Route path="/table">
               {/*       First Task*/}
               <Table />
             </Route>
             <Route path="/notes/:id">
-              <NoteDetail
-                notes={notes}
-                removeNote={(index) => deleteNote(index)}
-                updateNote={(id, newText) => updateNote(id, newText)}
-              />
+              <NoteDetail notes={notes} />
             </Route>
           </Switch>
         </div>

@@ -1,9 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import Note from "../Note/Note";
 import "./NoteList.css";
+import { UserContext } from "../../../Utils/UserContext/UserContext";
+
 export default function NoteList(props) {
   const [noteListState, setNoteListState] = useState([]);
+  const userContext = useContext(UserContext);
 
   useEffect(() => {
     console.log(noteListState);
@@ -12,7 +15,7 @@ export default function NoteList(props) {
 
   //pointing deleteNote method of parent
   const deleteNote = (index) => {
-    props.removeNote(index);
+    userContext.deleteNote(index);
   };
   return (
     <div className="note-list-container">
